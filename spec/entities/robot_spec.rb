@@ -7,7 +7,7 @@ RSpec.describe 'Robot entity' do
     it 'position_x not number' do
       position_x = 'something here'
       position_y = positive_position_factory
-      facing = generate_facing
+      facing = generate_facing_entity
 
       expect { Robot.new(position_x, position_y, facing) }.to raise_error(ArgumentError, 'position_x must be integer')
     end
@@ -15,7 +15,7 @@ RSpec.describe 'Robot entity' do
     it 'position_x less than 0' do
       position_x = -1
       position_y = positive_position_factory
-      facing = generate_facing
+      facing = generate_facing_entity
 
       expect { Robot.new(position_x, position_y, facing) }.to raise_error(ArgumentError, 'position_x must be positive')
     end
@@ -25,7 +25,7 @@ RSpec.describe 'Robot entity' do
     it 'position_y not number' do
       position_x = positive_position_factory
       position_y = 'something here'
-      facing = generate_facing
+      facing = generate_facing_entity
 
       expect { Robot.new(position_x, position_y, facing) }.to raise_error(ArgumentError, 'position_y must be integer')
     end
@@ -34,7 +34,7 @@ RSpec.describe 'Robot entity' do
       # Arrange
       position_x = positive_position_factory
       position_y = -1
-      facing = generate_facing
+      facing = generate_facing_entity
 
       expect { Robot.new(position_x, position_y, facing) }.to raise_error(ArgumentError, 'position_y must be positive')
     end
@@ -60,7 +60,7 @@ RSpec.describe 'Robot entity' do
       end.to raise_error(ArgumentError, 'facing must length must be more than 0')
     end
 
-    it 'facing empty string' do
+    it 'facing WRONG FACING' do
       # Arrange
       position_x = positive_position_factory
       position_y = positive_position_factory
@@ -77,7 +77,7 @@ RSpec.describe 'Robot entity' do
       # Arrange
       position_x = positive_position_factory
       position_y = positive_position_factory
-      facing = generate_facing
+      facing = generate_facing_entity
       facing_expected = FACING[facing.to_sym]
 
       # Act
