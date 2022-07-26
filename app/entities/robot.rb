@@ -13,7 +13,11 @@ class Robot
     position_y_validations(position_y)
     facing_validations(facing)
 
-    temp_facing = FACING[facing.to_sym]
+    temp_facing = if facing.is_a? Symbol
+                    FACING[facing]
+                  else
+                    FACING[facing.to_sym]
+                  end
     raise ArgumentError, 'must be specified a valid facing' if temp_facing.nil?
 
     @position_x = position_x
@@ -25,16 +29,19 @@ class Robot
 
   def position_x_validations(position_x)
     raise ArgumentError, 'position_x must be integer' unless position_x.is_a? Integer
-    raise ArgumentError, 'position_x must be positive' unless position_x.positive?
+    raise ArgumentError, 'position_x must be positive' unless position_x >= 0
   end
 
   def position_y_validations(position_y)
     raise ArgumentError, 'position_y must be integer' unless position_y.is_a? Integer
-    raise ArgumentError, 'position_y must be positive' unless position_y.positive?
+    raise ArgumentError, 'position_y must be positive' unless position_y >= 0
   end
 
   def facing_validations(facing)
-    raise ArgumentError, 'facing must be string' unless facing.is_a? String
+    unless (facing.is_a? String) || (facing.is_a? Symbol) || (facing.is_a? Hash)
+      raise ArgumentError,
+            'facing must be string'
+    end
     raise ArgumentError, 'facing must length must be more than 0' if facing.empty?
   end
 end
