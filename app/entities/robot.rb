@@ -6,7 +6,7 @@ FACING = {
 }
 
 class Robot
-  attr_reader :position_x, :position_y, :facing
+  attr_accessor :position_x, :position_y, :facing
 
   def initialize(position_x, position_y, facing)
     position_x_validations(position_x)
