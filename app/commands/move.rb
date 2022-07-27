@@ -11,6 +11,7 @@ class MoveCommand
                                            @game.max_x_position, @game.max_y_position)
     @game.robot.position_x = position_x unless position_x.nil?
     @game.robot.position_y = position_y unless position_y.nil?
+    @game
   end
 
   private

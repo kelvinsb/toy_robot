@@ -9,6 +9,7 @@ class RotateCommand
 
     the_count = side == 'RIGHT' ? 1 : -1
     @game.robot.facing = get_new_facing(@game.robot.facing + the_count)
+    @game
   end
 
   def get_new_facing(facing)
