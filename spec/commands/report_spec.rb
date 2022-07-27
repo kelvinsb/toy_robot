@@ -13,7 +13,7 @@ RSpec.describe 'Report command' do
       report_command = ReportCommand.new(the_game)
       report_executed = report_command.execute
 
-      expect(report_executed).to eq(false)
+      expect(report_executed).to eq('')
       expect(the_game.robot).to eq(nil)
     end
   end

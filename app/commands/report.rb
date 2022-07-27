@@ -4,10 +4,11 @@ class ReportCommand
   end
 
   def execute
-    return false if @game.nil?
-    return false if @game.robot.nil?
+    return '' if @game.nil?
+    return '' if @game.robot.nil?
 
-    something = [@game.robot.position_x, @game.robot.position_y, @game.robot.facing]
-    something.join(',')
+    facing = facing_adaptor_entity_to_command(FACING.invert[@game.robot.facing])
+    report_values = [@game.robot.position_x, @game.robot.position_y, facing]
+    report_values.join(',')
   end
 end
