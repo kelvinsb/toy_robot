@@ -1,10 +1,15 @@
 require 'sinatra'
+require 'sinatra/cors'
 require 'json'
 require './app/entities/games'
 require './app/presentation/controllers/execute_commands'
 
 games = nil
-
+set :port, 4000
+set :allow_origin, '*'
+set :allow_methods, 'GET,HEAD,POST'
+set :allow_headers, 'content-type,if-modified-since'
+set :expose_headers, 'location,link'
 before do
   content_type :json
 end
